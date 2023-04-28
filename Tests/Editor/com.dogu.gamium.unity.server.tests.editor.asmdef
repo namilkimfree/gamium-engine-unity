@@ -1,0 +1,10 @@
+{
+    "name": "com.dogu.gamium.unity.server.tests.editor",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "references": ["com.dogu.gamium.unity.server.editor"],
+    "includePlatforms": [
+        "Editor"
+    ]
+}

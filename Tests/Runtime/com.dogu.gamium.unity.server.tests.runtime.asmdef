@@ -1,0 +1,10 @@
+{
+  "name": "com.dogu.gamium.unity.server.tests.runtime",
+  "references": [
+    "com.dogu.gamium.unity.server.runtime",
+    "com.dogu.gamium.unity.server.runtime.protocol"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
