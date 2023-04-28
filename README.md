@@ -1,3 +1,5 @@
+<img src="https://s3.ap-northeast-2.amazonaws.com/storage.dogutech.io/dogu/logo/dogu-gamium-logo.png" width="100px" height="100px" title="Github_Logo"/>
+
 # Gamium Server Unity
 
 The Gamium Server plays the role of executing the game state according to the request when it receives a request such as virtual input.  
