@@ -5,7 +5,7 @@
 Gamium Server Unity
 </p>
 
-The Gamium Server plays the role of executing the game state according to the request when it receives a request such as virtual input.  
+The Gamium Server plays the role of controling the game state according to the request when it receives a request such as virtual input.  
 Start preparing to run your tests by including the Gamium Server SDK in your game build.
 
 This library is used to apply gamium to unity projects.
