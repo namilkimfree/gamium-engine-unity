@@ -1,5 +1,5 @@
 {
-  "name": "com.dogu.gamium.unity.server.runtime.protocol",
+  "name": "com.dogu.gamium.engine.unity.runtime.protocol",
   "references": [
     "Unity.TextMeshPro"
   ],

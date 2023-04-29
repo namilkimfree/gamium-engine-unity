@@ -1,8 +1,8 @@
 {
-  "name": "com.dogu.gamium.unity.server.runtime",
+  "name": "com.dogu.gamium.engine.unity.runtime",
   "references": [
     "Unity.TextMeshPro",
-    "com.dogu.gamium.unity.server.runtime.protocol",
+    "com.dogu.gamium.engine.unity.runtime.protocol",
     "Unity.InputSystem"
   ],
   "includePlatforms": [],

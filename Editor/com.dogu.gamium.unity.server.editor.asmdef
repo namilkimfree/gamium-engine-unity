@@ -1,9 +1,9 @@
 {
-  "name": "com.dogu.gamium.unity.server.editor",
+  "name": "com.dogu.gamium.engine.unity.editor",
   "rootNamespace": "",
   "references": [
-    "com.dogu.gamium.unity.server.runtime",
-    "com.dogu.gamium.unity.server.runtime.protocol"
+    "com.dogu.gamium.engine.unity.runtime",
+    "com.dogu.gamium.engine.unity.runtime.protocol"
   ],
   "includePlatforms": [
     "Editor"

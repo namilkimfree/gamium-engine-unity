@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 using Transform = UnityEngine.Transform;
 
-[assembly: InternalsVisibleTo("com.dogu.gamium.unity.server.tests.editor")]
+[assembly: InternalsVisibleTo("com.dogu.gamium.engine.unity.tests.editor")]
 
 namespace Gamium.Editor.IMGUI
 {
