@@ -22,10 +22,10 @@ namespace Gamium
                 int startRet = await server.Start();
                 if (0 != startRet)
                 {
-                    Logger.Error($"GamiumServer Start Failed: {startRet} {server.GetLastErrorMessage()}");
+                    Logger.Error($"GamiumEngine Start Failed: {startRet} {server.GetLastErrorMessage()}");
                 }
 
-                Logger.Verbose($"GamiumServer Version : {server.GetVersion()}");
+                Logger.Verbose($"GamiumEngine Version : {server.GetVersion()}");
 
                 _server = server;
             }
@@ -39,12 +39,12 @@ namespace Gamium
                 if (0 != updateRet)
                 {
                     Logger.Error(
-                        $"GamiumServer Update Failed: {updateRet} {_server.GetLastErrorMessage()}");
+                        $"GamiumEngine Update Failed: {updateRet} {_server.GetLastErrorMessage()}");
                 }
 
                 if (10.0f <= logTime)
                 {
-                    Logger.Verbose($"GamiumServer Update");
+                    Logger.Verbose($"GamiumEngine Update");
                     logTime = 0;
                 }
             }

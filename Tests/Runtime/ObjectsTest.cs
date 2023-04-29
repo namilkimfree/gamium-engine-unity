@@ -19,7 +19,7 @@ namespace Gamium
         [SetUp]
         public void Setup()
         {
-            var server = GameObject.Find("GamiumServer");
+            var server = GameObject.Find("GamiumEngine");
             if (null != server)
             {
                 var serverComp = server.GetComponent<ServerComponent.Behaviour>();

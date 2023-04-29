@@ -83,7 +83,7 @@ namespace Gamium.Private
 
         public async Task<int> Start()
         {
-            Logger.Verbose($"GamiumServer on {_config.port}");
+            Logger.Verbose($"GamiumEngine on {_config.port}");
             _selector = new Selector(_config.port);
             _selector._onAccept = (sockInfo) => OnAccept(sockInfo);
             _selector._onClose = (sockInfo) => OnClose(sockInfo);
@@ -102,7 +102,7 @@ namespace Gamium.Private
                     if (task.IsFaulted || task.IsCanceled || null != task.Exception)
                     {
                         Logger.Error(
-                            $"GamiumServer HandleOnRecv failed. fault:{task.IsFaulted}, cancel:{task.IsCanceled}, exception:{task.Exception}");
+                            $"GamiumEngine HandleOnRecv failed. fault:{task.IsFaulted}, cancel:{task.IsCanceled}, exception:{task.Exception}");
                     }
                 });
             };
@@ -150,7 +150,7 @@ namespace Gamium.Private
 
         private void OnAccept(ClientSession clientSession)
         {
-            Logger.Verbose($"GamiumServer.OnAccept");
+            Logger.Verbose($"GamiumEngine.OnAccept");
             _clientSequence += 1;
             _eventContext.lastConnectedAddr = clientSession._remoteAddr;
             _eventContext.lastConnectedPort = clientSession._remotePort;
@@ -163,7 +163,7 @@ namespace Gamium.Private
 
         private void OnClose(ClientSession clientSession)
         {
-            Logger.Verbose($"GamiumServer.OnClose");
+            Logger.Verbose($"GamiumEngine.OnClose");
             _eventContext.lastClosedAddr = clientSession._remoteAddr;
             _eventContext.lastClosedPort = clientSession._remotePort;
 
@@ -195,12 +195,12 @@ namespace Gamium.Private
             var reqT = RequestT.DeserializeFromBinary(packetbuffer);
             if (!PacketTypes.mappings.ContainsKey(reqT.Param.Type))
             {
-                Logger.Error($"GamiumServer.handleCommand ${reqT.Param.Type} not handleable");
+                Logger.Error($"GamiumEngine.handleCommand ${reqT.Param.Type} not handleable");
                 return;
             }
 
 
-            Logger.Verbose($"GamiumServer.handleCommand Seq:{reqT.Seq}, Type:{reqT.Param.Type} start >> ");
+            Logger.Verbose($"GamiumEngine.handleCommand Seq:{reqT.Seq}, Type:{reqT.Param.Type} start >> ");
 
             var mapping = PacketTypes.mappings[reqT.Param.Type];
             var responseT = new ResponseT
@@ -230,7 +230,7 @@ namespace Gamium.Private
             var buffer = fbb.DataBuffer.ToSizedArray();
             _selector.Send(sock, buffer, buffer.Length);
 
-            Logger.Verbose($"GamiumServer.handleCommand Seq:{reqT.Seq}, Type:{reqT.Param.Type} end << ");
+            Logger.Verbose($"GamiumEngine.handleCommand Seq:{reqT.Seq}, Type:{reqT.Param.Type} end << ");
         }
 
         static internal Server instance;
