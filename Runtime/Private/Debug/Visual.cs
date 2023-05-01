@@ -11,7 +11,7 @@ namespace Gamium.Private.Debug
     {
         internal static int iconPixel = 5;
         internal static Sprite rectSprite { get; private set; }
-        internal static bool shouldShow = true;
+        internal static bool shouldShow = false;
         static float opacity = 0.5f;
 
 
