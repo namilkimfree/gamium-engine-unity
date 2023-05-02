@@ -34,7 +34,7 @@ namespace Gamium
                         isVerbose = true
                     });
                 _server = serverBuilder._server;
-                serverBuilder.StartServer();
+                serverBuilder.Run();
             }
 
             _client = new SocketClient("127.0.0.1", 50061);

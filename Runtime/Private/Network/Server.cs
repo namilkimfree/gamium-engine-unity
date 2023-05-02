@@ -12,6 +12,12 @@ using Logger = Gamium.Private.Util.Logger;
 
 namespace Gamium.Private
 {
+    internal enum ServerState
+    {
+        Stop,
+        Starting,
+        Running,
+    }
     internal class Server
     {
         public Server()
@@ -83,7 +89,9 @@ namespace Gamium.Private
 
         public async Task<int> Start()
         {
-            Logger.Verbose($"GamiumEngine on {_config.port}");
+            Logger.Verbose($"GamiumEngine start try {_config.port}");
+            _state = ServerState.Starting;
+
             _selector = new Selector(_config.port);
             _selector._onAccept = (sockInfo) => OnAccept(sockInfo);
             _selector._onClose = (sockInfo) => OnClose(sockInfo);
@@ -113,17 +121,25 @@ namespace Gamium.Private
                 return initRet;
             }
 
+            _state = ServerState.Running;
+            Logger.Verbose($"GamiumEngine on {_config.port}, version: {GetVersion()}");
 
             return 0;
         }
 
         public void Stop()
         {
+            Logger.Verbose($"GamiumEngine stop {_config.port}");
+            _state = ServerState.Stop;
             _selector.Stop();
         }
 
         public int Update()
         {
+            if (_state != ServerState.Running)
+            {
+                return 0;
+            }
             Profiler.profiler.Update();
             Input.storage.Update();
             foreach (var stateHandler in _stateHandlers)
@@ -238,6 +254,7 @@ namespace Gamium.Private
         internal float _startTime { get; private set; }
         internal ulong _clientSequence { get; private set; }
         internal Dictionary<string, string> _envs = new Dictionary<string, string>();
+        internal ServerState _state { get; private set; }
 
         Selector _selector;
 

@@ -24,9 +24,9 @@ namespace Gamium
             return this;
         }
 
-        public void StartServer()
+        public void Run()
         {
-            Assert.IsTrue(GamiumThread.IsMainThread(), $"ServerBuilder.StartServer() must be called from main thread");
+            Assert.IsTrue(GamiumThread.IsMainThread(), $"ServerBuilder.Run() must be called from main thread");
 
 #if !USE_GAMIUM
             Debug.LogError("USE_GAMIUM Scripting Define Symbol is not set. Please set it in Edit > Project Settings > Player > Other Settings > Scripting Define Symbols");
@@ -51,7 +51,7 @@ namespace Gamium
             ActionsHandler.Setup();
             InternalCommandHandler.Setup();
 
-            _instance.StartServer(_server).ContinueWith(task =>
+            _instance.Run(_server).ContinueWith(task =>
             {
                 if (task.IsFaulted || task.IsCanceled || null != task.Exception)
                 {
